@@ -1,0 +1,130 @@
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+	margin-bottom: 0 !important;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.download {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.showdetails {
+	margin-top: 0 !important;
+}
+
+.sidemenu {
+	background: #c5c5c5 !important;
+}
+
+.sidemenuitem, .sidemenuitem *{
+	background: none;
+	border: none;
+	color: black;
+	font-weight: 700;
+	font-size: 17px;
+}
+
+.listheader {
+	font-size: 15px !important;
+	color: #000000 !important;
+	font-weight: 700;
+}
+
+.listitem {
+	font-size: 15px !important;
+	color: #000000 !important;
+	font-weight: 700;
+}
+
+.ion-funnel {
+	color: #000000 !important;
+	font-size: 25px;
+}
+
+.popover {
+	border-radius: 25px;
+	background: rgba(200,200,200,0.9);
+}
+
+.popover-header, .popover-header * {
+	background: rgba(0,0,0,0);
+}
+
+.popover-text {
+	color: blue;
+}
+
+.groupInd, .groupInd * {
+	font-size: 20px;
+}
+
+.text-center {
+}
+
+.changepage * {
+	padding-top: 10px;
+	font-size: 15px;
+}
+
+.justify {
+	text-align: justify;
+	vertical-align: middle;
+}
+
+.justify:after {
+	content: "";
+	display: inline-block;
+	width: 100%;
+}
+
+.speakername {
+	width: 100%;
+	font-weight: 700 !important;
+	font-size: 22px;
+}
+
+.content {
+	font-size: 18px;
+}
+
+.talks {
+	margin-left: 10px;
+	margin-right: 10px;
+	line-height: 25px;
+}
+
+.cssFade {
+    transition: 0.7s linear all;
+    opacity: 1;
+}
+.cssFade.ng-hide {
+    opacity: 0;
+}
+
+.cssSlideUp {
+    transition: 0.7s linear all;
+    height: 80px;
+    overflow: hidden;
+}
+.cssSlideUp.ng-hide {
+    height:0;
+}
+
+
+.bold {
+	font-weight: 700 !important;
+}
+
+.borderless {
+	border: none !important;
+}

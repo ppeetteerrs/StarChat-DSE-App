@@ -1,0 +1,19 @@
+<ion-view title="Browse">
+  <ion-content>
+    <div class="list">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" class="searchbar" ng-model="searchInput">
+        </label>
+        <button class="button button-clear ion-funnel" ng-click="openPopover($event)">
+        </button>
+      </div>
+      <a class="item" ui-sref="topic({year: {{topic.year}}, id: {{topic.questionNumber}}})" ng-repeat = "topic in topicinfo | orderBy:sortType:sortReverse | filter:searchInput">
+        <p class="listheader">{{topic.year}} Question {{topic.questionNumber}}</p>
+        <p class="listitem">{{topic.fullQuestion}}</p>
+      </a>
+      {{entries.name}}
+    </div>
+  </ion-content>
+</ion-view>

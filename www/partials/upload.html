@@ -1,0 +1,28 @@
+<div class="input-group">
+  <!--<input type="text" class="form-control" ng-model="topicinfo.year" placeholder="Year" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" ng-model="topicinfo.questionNumber" placeholder="Question Number" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" ng-model="topicinfo.indYoutubeLink" placeholder="Individual Youtube Link" aria-describedby="basic-addon1">
+  <input type="text" class="form-control" ng-model="topicinfo.groupYoutubeLink" placeholder="Group Youtube Link" aria-describedby="basic-addon1">
+  <button type="file" ngf-select="upload($file)"  accept="application/pdf">Group Transcript</button>
+  <button type="file" ngf-select ng-modedl="topicinfo.indTranscript" accept="application/pdf">Individual Transcript</button>
+  <button type="file" ngf-select ng-modedl="topicinfo.groupAudio" accept="audio/*">Group Audio</button>
+  <button type="file" ngf-select ng-modedl="topicinfo.indAudiot" accept="audio/*">Individual Audio</button>-->
+      <form id="uploadForm" enctype="multipart/form-data" action="/database/upload" method="post">
+      <input type="text" name="year" placeholder="Year" multiple />
+      <input type="text" name="questionNumber" placeholder="Question Number" multiple />
+      <input type="text" name="fullQuestion" placeholder="Question" multiple />
+      <p><input type="text" name="speakers_profile" placeholder='Profile' multiple />
+      ["Year:2015 Grade:5**","Year:2015 Grade:5","Year:2015 Grade:5*","Year:2015 Grade:5**"]
+      </p>
+      <p><input type="text" name="date" placeholder='Date' multiple />
+      8/8/2015
+      </p>
+      <input type="text" name="indYoutubeLink" placeholder="Individual Youtube Link" multiple />
+      <input type="text" name="groupYoutubeLink" placeholder="Group Youtube Link" multiple />
+      <input type="file" name="indTranscript" accept="application/pdf" multiple />Individual
+      <input type="file" name="groupTranscript" accept="application/pdf" multiple />Group
+      <input type="file" name="thumbnail" accept="image/*" multiple />Thumbnail
+      <input type="submit" value="Upload Image" name="submit">
+      <input type='text' id='random' name='random'><br>
+      <span id = "status"></span>
+</div>

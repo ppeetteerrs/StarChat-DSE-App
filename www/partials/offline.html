@@ -1,0 +1,29 @@
+<ion-view view-title="Offline">
+  <ion-content>
+  <div class="row">
+  	<div class="col">
+  		<button class="button icon ion-arrow-left-a"></button>
+  	</div>
+  	<div class="col">
+  		<button class="button icon ion-arrow-right-a"></button>
+  	</div>
+  	<div class="col">
+  		
+  	</div>
+  	<div class="col">
+  		
+  	</div>
+  	<div class="col">
+  		
+  	</div>
+  </div>
+	<ng-pdf template-url="partials/view.html" scale="page-fit"></ng-pdf>
+	<ion-audio-track track="track">
+		<ion-audio-controls>
+			<a class="button button-icon icon" ion-audio-play></a>
+			<ion-spinner icon="ios"></ion-spinner>
+		</ion-audio-controls>
+		<ion-audio-progress-bar display-time></ion-audio-progress-bar>
+     </ion-audio-track>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,68 @@
+<ion-view title="{{topicdata.Details.Full_Question}}">
+    <ion-content>
+        <div class="row">
+            <div class="col-50 text-center">
+                <button class="button-clear groupInd" ng-click="topicSelect()">
+                    <i class="icon ion-person-stalker" ng-class="{'positive' : groupToggle}">
+                    </i>
+                    <span ng-class="{'positive' : groupToggle}">Group</span>
+                </button>
+            </div>
+            <div class="col-50 text-center">
+                <button class="button-clear groupInd" ng-click="topicSelect()">
+                    <i class="icon ion-person" ng-class="{'balanced' : indToggle}">
+                    </i>
+                    <span ng-class="{'balanced' : indToggle}">Individual</span>
+                </button>
+            </div>
+        </div>
+        <div class="videoWrapper">
+            <iframe ng-src="{{trustSrc(youtubeUrl)}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <button class="button button-full button-positive download" ng-click="testFileDownload()">
+          下載音頻
+        </button>
+        <button class="button button-full button-positive showdetails icon ion-android-add-circle" ng-click="showDetails()">
+          Show Details
+        </button>
+        <div>
+            <div ng-show="detailsShow" class="row" ng-class="{ 'cssSlideUp': Loaded, 'cssFade': Loaded }">
+                <div class="col-50">
+                    <a class="item item-avatar borderless" href="#">
+                        <img src="img/A.png">
+                        <h2 class="bold text-left">Year : {{topicdata.Details.Profiles.A.Year}}</h2>
+                         <h2>Grade : {{topicdata.Details.Profiles.A.Grade}}</h2>
+                    </a>
+                </div>
+                <div class="col-50">
+                    <a class="item item-avatar borderless" href="#">
+                        <img src="img/B.png">
+                        <h2 class="bold text-left">Year : {{topicdata.Details.Profiles.B.Year}}</h2>
+                        <h2>Grade : {{topicdata.Details.Profiles.B.Grade}}</h2>
+                    </a>
+                </div>   
+            </div>
+            <div ng-show="detailsShow" class="row" ng-class="{ 'cssSlideUp': Loaded, 'cssFade': Loaded }">
+                <div class="col-50">
+                    <a class="item item-avatar borderless" href="#">
+                        <img src="img/C.png">
+                        <h2 class="bold text-left">Year : {{topicdata.Details.Profiles.C.Year}}</h2>
+                         <h2>Grade : {{topicdata.Details.Profiles.C.Grade}}</h2>
+                    </a>
+                </div>
+                <div class="col-50">
+                    <a class="item item-avatar borderless" href="#">
+                        <img src="img/D.png">
+                        <h2 class="bold text-left">Year : {{topicdata.Details.Profiles.D.Year}}</h2>
+                        <h2>Grade : {{topicdata.Details.Profiles.D.Grade}}</h2>
+                    </a>
+                </div>   
+            </div>
+        </div>
+        
+        <div ng-repeat="talks in dialogue" class="justify">
+            <div class="talks"><span class="speakername">{{talks.speaker}}:</span><span class="content"> {{talks.content}}</span></div>
+        <br>
+        </div>
+  </ion-content>
+</ion-view>

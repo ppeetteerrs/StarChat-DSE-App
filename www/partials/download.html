@@ -1,0 +1,13 @@
+<ion-view view-title="Download">
+  <ion-content>
+    <div class="list">
+        <div ng-repeat="file in files | filter: { name: 'd.mp3' }" ui-sref="offline({yearid: {{file.name.split('d.mp3')}}})">
+            <a class="item item-icon-left" >
+                <i class="icon ion-headphone"></i>
+                {{file.name.split("_____")[0].split("__").join(" ").replace("questionmark","?")}}
+                <p>{{file.name.split("_____")[1].substring(0, 4)}} Q {{file.name.split("_____")[1].substring(4, 5)}}.{{file.name.split("_____")[1].substring(5, 6)}}</p>
+            </a>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>
