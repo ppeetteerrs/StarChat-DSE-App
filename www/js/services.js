@@ -1,17 +1,22 @@
 var StarChatDSEServices = angular.module("StarChatDSEServices", ["StarChatDSE", "StarChatDSEControllers"]);
 
-StarChatDSEServices.service("Fetch", ["$http", function($http){
+StarChatDSEServices.service("Fetch", ["$http", "$ionicLoading", "$cordovaToast", function($http, $ionicLoading, $cordovaToast){
     var cachedData;
 
     function getData(callback){
+      $ionicLoading.show({
+        template: "<img src='partials/loading.svg'></img>",
+      });
       if(cachedData) {
         callback(cachedData);
-        console.log("huh");
+        console.log("infosheet is cached");
       } else {
-        $http.get('https://mean-tutorial-2-ppeetteerrs.c9users.io/infosheet').success(function(data){
+        $http.get('http://starchatdse.com/infosheet').success(function(data){
           cachedData = data;
           callback(data);
           console.log("got info.json");
+        }, function(error){
+          $cordovaToast.show('Please Ensure Stable Connection', 'long', 'bottom');
         });
       }
     }

@@ -1,0 +1,23 @@
+<ion-view>
+    <ion-nav-title class="text-center">{{title.year}} Q{{title.id}}</ion-nav-title>
+	<ion-content>
+        <div class="row">
+            <div class="col-50 text-center">
+                <button class="button-clear groupInd" ng-click="topicSelect(1)">
+                    <i class="icon ion-person-stalker" ng-class="{'positive bold' : groupToggle}">
+                    </i>
+                    <span ng-class="{'positive bold' : groupToggle}">Group</span>
+                </button>
+            </div>
+            <div class="col-50 text-center">
+                <button class="button-clear groupInd" ng-click="topicSelect(2)">
+                    <i class="icon ion-person" ng-class="{'balanced bold' : !groupToggle}">
+                    </i>
+                    <span ng-class="{'balanced bold' : !groupToggle}">Individual</span>
+                </button>
+            </div>
+        </div>
+		<ng-pdf template-url="partials/view.html" scale="page-fit" on-swipe-up="goNext()" on-swipe-down="goPrevious()"></ng-pdf>
+	</ion-content>
+</ion-view>
+

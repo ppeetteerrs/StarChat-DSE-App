@@ -1,10 +1,12 @@
 angular.module('ionic-audio').directive('ionAudioControls', function() {
     return {
       restrict: 'EA',
-      controller: ['$scope', '$element', ionAudioControlsCtrl]
+      require: ['ionAudioControls', '^^ionAudioTrack'],
+      controller: ['$scope', '$element', ionAudioControlsCtrl],
+      link: link
     };
 
-    function ionAudioControlsCtrl($scope, $element) {
+function ionAudioControlsCtrl($scope, $element) {
         var spinnerElem = $element.find('ion-spinner'), hasLoaded, self = this;
 
         spinnerElem.addClass('ng-hide');
@@ -17,11 +19,11 @@ angular.module('ionic-audio').directive('ionAudioControls', function() {
           if (!hasLoaded) {
               self.toggleSpinner();
           }
-          $scope.track.play();
+          this.start();
         };
 
-        var unbindStatusListener = $scope.$watch('track.status', function (status) {
-          switch (status) {
+        var unbindStatusListener = $scope.$parent.$watch('track.status', function (status) {
+            switch (status) {
               case 1: // Media.MEDIA_STARTING
                   hasLoaded = false;
                   break;
@@ -37,12 +39,15 @@ angular.module('ionic-audio').directive('ionAudioControls', function() {
               case 4: // Media.MEDIA_STOPPED
                   hasLoaded = false;
                   break;
-          }
+            }
         });
 
         $scope.$on('$destroy', function() {
           unbindStatusListener();
         });
     }
-});
 
+    function link(scope, element, attrs, controllers) {
+        controllers[0].start = controllers[1].start;
+    }
+});

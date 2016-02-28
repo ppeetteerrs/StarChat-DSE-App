@@ -1,0 +1,19 @@
+<ion-view>
+  <ion-nav-title class="text-center">Grammar Center</ion-nav-title>
+  <ion-content class="home-content">
+    <div class="list">
+      <div class="item item-input-inset transparent borderless">
+        <label class="item-input-wrapper transparent">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" class="searchbar" ng-model="searchInput">
+        </label>
+        <button class="button button-clear ion-social-buffer" ng-click="openPopover($event)">
+        </button>
+      </div>
+      <a class="item transparent download-list" ng-click="clearCache(topic.year, topic.questionNumber)" ng-repeat = "topic in topicinfo | orderBy:sortType | filter:searchInput">
+        <p class="download listheader">{{topic.year}} Question {{topic.questionNumber}}</p>
+        <p class="download listitem">{{topic.fullQuestion}}</p>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,13 +1,16 @@
-<ion-view view-title="Download">
-  <ion-content>
-    <div class="list">
-        <div ng-repeat="file in files | filter: { name: 'd.mp3' }" ui-sref="offline({yearid: {{file.name.split('d.mp3')}}})">
-            <a class="item item-icon-left" >
-                <i class="icon ion-headphone"></i>
-                {{file.name.split("_____")[0].split("__").join(" ").replace("questionmark","?")}}
-                <p>{{file.name.split("_____")[1].substring(0, 4)}} Q {{file.name.split("_____")[1].substring(4, 5)}}.{{file.name.split("_____")[1].substring(5, 6)}}</p>
-            </a>
-        </div>
-    </div>
-  </ion-content>
+<ion-view>
+    <ion-nav-title class="text-center">Listen Offline</ion-nav-title>
+    <ion-nav-buttons side="primary">
+        <button class="button button-clear icon ion-trash-b nav-button-options" ng-click="confirmRemovalAll()">
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="home-content" ng-class="{'empty-folder' : files.length == 0}" ng-click="goToBrowse(files.length)">
+        <ion-list>
+            <ion-item ng-repeat="file in files | orderBy: Sorter | filter: { name: 'd.pdf' }" ng-click="goToOfflineView(file.name.split('d.pdf'))" class="item item-icon-left transparent download-list">
+                    <i class="icon ion-headphone download listicon transparent"></i>
+                    <p class="download listheader transparent">{{file.name.split("_____")[1].substring(0, 4)}} Q {{file.name.split("_____")[1].substring(4, 5)}}.{{file.name.split("_____")[1].substring(5, 6)}}</p>
+                    <p class="download listitem transparent">{{file.name.split("_____")[0].split("__").join(" ").replace("questionmark","?")}}</p>
+            </ion-item>  
+        </ion-list>
+    </ion-content>
 </ion-view>

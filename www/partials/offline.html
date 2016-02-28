@@ -1,29 +1,21 @@
-<ion-view view-title="Offline">
-  <ion-content>
-  <div class="row">
-  	<div class="col">
-  		<button class="button icon ion-arrow-left-a"></button>
-  	</div>
-  	<div class="col">
-  		<button class="button icon ion-arrow-right-a"></button>
-  	</div>
-  	<div class="col">
-  		
-  	</div>
-  	<div class="col">
-  		
-  	</div>
-  	<div class="col">
-  		
-  	</div>
-  </div>
-	<ng-pdf template-url="partials/view.html" scale="page-fit"></ng-pdf>
-	<ion-audio-track track="track">
-		<ion-audio-controls>
-			<a class="button button-icon icon" ion-audio-play></a>
-			<ion-spinner icon="ios"></ion-spinner>
-		</ion-audio-controls>
-		<ion-audio-progress-bar display-time></ion-audio-progress-bar>
-     </ion-audio-track>
-  </ion-content>
+<ion-view>
+	<ion-nav-title class="text-center">{{yearid.split("_____")[1].substring(0, 4)}} Q {{yearid.split("_____")[1].substring(4, 5)}}.{{yearid.split("_____")[1].substring(5, 6)}}</ion-nav-title>
+    <ion-nav-buttons side="primary">
+        <button class="button button-clear icon ion-android-more-vertical nav-button-options" ng-click="openPopover($event)">
+        </button>
+    </ion-nav-buttons>
+	
+		<ion-content>
+			<br>
+			<ng-pdf template-url="partials/offline_view.html" scale="page-fit" on-swipe-up="goNext()" on-swipe-down="goPrevious()"></ng-pdf>
+		</ion-content>
+	<ion-audio-track track="dynamicTrack" toggle-playback="togglePlayback">
+		<ion-footer-bar class="bar-positive row audio-bar-parent">
+			<ion-audio-controls>
+                <a class="button button-icon icon col-10 audio-bar-child" ion-audio-play></a>
+            </ion-audio-controls>
+			<ion-audio-progress-bar track="dynamicTrack" display-time class="col-90 no-margins">
+			</ion-audio-progress-bar>
+		</ion-footer-bar>
+	</ion-audio-track>
 </ion-view>

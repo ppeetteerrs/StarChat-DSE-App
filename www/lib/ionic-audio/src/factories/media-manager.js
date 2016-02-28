@@ -2,7 +2,7 @@ angular.module('ionic-audio').factory('MediaManager', ['$interval', '$timeout', 
     var tracks = [], currentTrack, currentMedia, playerTimer;
 
     if (!$window.cordova && !$window.Media) {
-        console.log("ionic-audio: missing Cordova Media plugin. Have you installed the plugin? \nRun 'ionic plugin add org.apache.cordova.media'");
+        console.log("ionic-audio: missing Cordova Media plugin. Have you installed the plugin? \nRun 'ionic plugin add cordova-plugin-media'");
         return null;
     }
 
@@ -14,6 +14,19 @@ angular.module('ionic-audio').factory('MediaManager', ['$interval', '$timeout', 
         seekTo: seekTo,
         destroy: destroy
     };
+
+    function find(track) {
+        if (track.id < 0) return;
+
+        var replaceTrack = tracks.filter(function(localTrack) {
+            return localTrack.id == track.id;
+        }).pop();
+
+        if (replaceTrack) {
+            tracks.splice(replaceTrack.id, 1, track);
+        }
+        return replaceTrack;
+     }
 
     /*
     Creates a new Media from a track object
@@ -30,6 +43,7 @@ angular.module('ionic-audio').factory('MediaManager', ['$interval', '$timeout', 
             console.log('ionic-audio: missing track url');
             return;
         }
+
         angular.extend(track, {
             onSuccess: playbackSuccess,
             onError: playbackError,
@@ -40,12 +54,17 @@ angular.module('ionic-audio').factory('MediaManager', ['$interval', '$timeout', 
             progress: 0
         });
 
+        if (find(track)) {
+            return track.id;
+        }
+
         track.id  = tracks.push(track) - 1;
         return track.id;
     }
 
-
     function play(trackID) {
+        if (!angular.isNumber(trackID) || trackID > tracks.length - 1) return;
+
         // avoid two tracks playing simultaneously
         if (currentTrack) {
             if (currentTrack.id == trackID) {

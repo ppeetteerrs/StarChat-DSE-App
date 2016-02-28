@@ -1,0 +1,21 @@
+  <ion-popover-view class="popover browse-popover">
+    <ion-header-bar class="popover-header">
+      <h1 class="popover-text bold popover-header-text">Sort By:</h1>
+    </ion-header-bar>
+    <ion-content class="popover-header">
+		<ul class="list">
+		    <li class="item popover-text text-center" ng-click="sortItems(1)">
+		    Most Recent Last
+		    </li>
+		    <li class="item popover-text text-center" ng-click="sortItems(2)">
+		    Most Recent First
+		    </li>
+		    <li class="item popover-text text-center" ng-click="sortItems(3)">
+		    By Title (A-Z)
+		    </li>
+		    <li class="item popover-text text-center" ng-click="sortItems(4)">
+		    By Title (Z-A)
+		    </li>
+		</ul>
+    </ion-content>
+  </ion-popover-view>

@@ -1,3 +1,19 @@
+## v1.3.0
+
+- make tracks observable to allow dynamic assignment of scope variable ```track``` in ```ion-audio-track```
+- updated built-in example to show this use case
+
+### Breaking changes
+
+- ```ion-audio-progress-bar``` has an isolated scope now therefore it will not inherit a track instance from the parent directive unless
+it is passed as a property:
+
+````
+<ion-audio-progress-bar track="track" display-time></ion-audio-progress-bar>
+```` 
+
+For global progress bars that are outside the scope of ```ion-audio-track``` there are no changes.
+
 ## v1.2.6
 
 - added minified and uglified script versions

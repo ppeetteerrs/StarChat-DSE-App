@@ -1,8 +1,34 @@
-<ion-view title="Home">
-  <ion-content>
-      <h1>HAHA</h1>
-      <ul>
-        <li ng-repeat = "items in list.Dialogue.g"><h3>{{items.speaker}}:</h3> {{items.content}}</li>
-      </ul>
-  </ion-content>
+<ion-view>
+	<ion-nav-title class="text-center">Home</ion-nav-title>
+	<ion-nav-buttons side="primary">
+        <button class="button button-clear icon ion-help-circled nav-button-options" ui-sref="intro">
+        </button>
+    </ion-nav-buttons>
+	<ion-content class="home-content">
+		<div class="row">
+		  	<div class="col text-center" ui-sref="browse">
+		  		<!--<i class="icon ion-ios-cloud home-icon text-center" ui-sref="browse"><p class="home-title text-center">Listen Online</p></i><i class="icon ion-edit home-icon text-center" ui-sref="teach_browse"><p class="home-title text-center">Teaching Center</p></i><i class="icon ion-android-folder home-icon text-center" ui-sref="download"><p class="home-title text-center">Listen Offline</p></i><i class="icon ion-information-circled home-icon text-center" ui-sref="about"><p class="home-title text-center">About</p></i><i ng-show="yearid" class="icon ion-play home-icon text-center" ui-sref="offline({yearid: yearid})"><p class="home-title text-center">Recently Played</p></i>	-->
+		  		<img src="img/listen_online_icon.png" width="100%"><p class="home-title text-center">Listen Online</p>
+		  	</div>
+		  	<div class="col text-center" ui-sref="teach_browse">
+		  		<img src="img/grammar_center_icon.png" width="100%"><p class="home-title text-center">Grammar Centre</p>
+		  	</div>
+		</div>
+		<div class="row">
+		  	<div class="col text-center" ui-sref="download">
+		  		<img src="img/listen_offline_icon.png" width="100%"><p class="home-title text-center">Listen Offline</p>
+		  	</div>
+		  	<div class="col text-center" ui-sref="about">
+		  		<img src="img/about_icon.png" width="100%"><p class="home-title text-center">About</p>
+		  	</div>
+		</div>
+		<div class="row">
+		  	<div class="col text-center" ui-sref="offline({yearid: yearid})" ng-show="yearid">
+		  		<img src="img/playing_icon.png" width="100%"><p class="home-title text-center">Now Playing</p>
+		  	</div>
+		  	<div class="col text-center">
+		  	
+		  	</div>
+		</div>
+	</ion-content>
 </ion-view>

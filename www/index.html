@@ -3,15 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <title>StarChat DSE</title>
-    <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="lib/angular/angular.js"></script>
     <script src="lib/ionic/js/ionic.bundle.min.js"></script>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="lib/angular-animate/angular-animate.min.js"></script>
+    <script src="lib/ngstorage/ngStorage.js"></script>
+    <script src="lib/angular-touch/angular-touch.min.js"></script>
     <script src="lib/pdfjs/pdf.js"></script>
     <script src="lib/pdfjs/pdf.worker.js"></script>
     <script src="lib/angular-pdf/angular-pdf.js"></script>
@@ -24,35 +26,42 @@
     <title>StarChat DSE</title>
   </head>
   
-  <body ng-app="StarChatDSE">
+  <body ng-app="StarChatDSE" class="platform-android platform-cordova platform-webview">
 
       <ion-side-menus enable-menu-with-back-views="true" ng-controller="navCtrl">
       <!-- Left menu -->
-      <ion-side-menu side="left" width="180" class="sidemenu">
-        <div class="list sidemenuitem">
-
-          <a class="item item-icon-left sidemenuitem" ui-sref="home" menu-close="left">
-            <i class="icon ion-home sidemenutext"></i>
-            <span class="sidemenutext">Home</span>
+      <ion-side-menu side="left" width="210" style="background-image: url('./img/side_background.png');background-size: cover;background-repeat: no-repeat;background-position: center center;background-attachment: fixed">
+        <img src="./img/logo.png" width="100%">
+        <div class="list transparent">
+          <a class="item item-icon-left sidemenu-item" ui-sref="home" menu-close="left">
+            <i class="icon ion-home "></i>
+            <span>Home</span>
           </a>
-          <a class="item item-icon-left sidemenuitem" ui-sref="browse" menu-close="left">
-            <i class="icon ion-ios-cloud sidemenutext"></i>
-            <span class="sidemenutext">Database</span>
+          <a class="item item-icon-left sidemenu-item" ui-sref="browse" menu-close="left">
+            <i class="icon ion-ios-cloud "></i>
+            <span>Listen Online</span>
           </a>
-          <a class="item item-icon-left sidemenuitem" ui-sref="download" menu-close="left">
-            <i class="icon ion-android-folder sidemenutext"></i>
-            <span class="sidemenutext">Downloaded</span>
+          <a class="item item-icon-left sidemenu-item" ui-sref="teach_browse" menu-close="left">
+            <i class="icon ion-edit "></i>
+            <span>Grammar Centre</span>
           </a>
-          <a class="item item-icon-left sidemenuitem" ui-sref="home" menu-close="left">
-            <i class="icon ion-information-circled sidemenutext"></i>
-            <span class="sidemenutext">About</span>
+          <a class="item item-icon-left sidemenu-item" ui-sref="download" menu-close="left">
+            <i class="icon ion-android-folder "></i>
+            <span>Listen Offline</span>
           </a>
-
+          <a class="item item-icon-left sidemenu-item" ng-show="yearid" ui-sref="offline({yearid: yearid})" menu-close="left">
+            <i class="icon ion-play "></i>
+            <span>Now Playing</span>
+          </a>
+          <a class="item item-icon-left sidemenu-item" ui-sref="about" menu-close="left">
+            <i class="icon ion-information-circled "></i>
+            <span>About</span>
+          </a>
         </div>
       </ion-side-menu>
 
       <ion-side-menu-content>
-        <ion-nav-bar class="bar-positive">
+        <ion-nav-bar class="bar-royal">
             <ion-nav-buttons side="left">
              <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
             </ion-nav-buttons>

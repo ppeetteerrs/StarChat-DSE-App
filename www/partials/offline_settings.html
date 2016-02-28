@@ -1,0 +1,10 @@
+  <ion-popover-view class="offline-settings">
+		<ion-list>
+			<ion-radio ng-model="groupInd" ng-value="'d'" name="groupInd" ng-change="readPDF(groupInd,verbatimImprove)">Group</ion-radio>
+			<ion-radio ng-model="groupInd" ng-value="'i'" name="groupInd" ng-change="readPDF(groupInd,verbatimImprove)">Individual</ion-radio>
+		</ion-list>
+		<ion-list>
+			<ion-radio ng-model="verbatimImprove" ng-value="''" name="verbatimImprove" ng-change="readPDF(groupInd,verbatimImprove)">Verbatim</ion-radio>
+			<ion-radio ng-model="verbatimImprove" ng-value="'i'" name="verbatimImprove" ng-change="readPDF(groupInd,verbatimImprove)">Improved</ion-radio>
+		</ion-list>
+  </ion-popover-view>

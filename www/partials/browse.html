@@ -1,19 +1,19 @@
-<ion-view title="Browse">
-  <ion-content>
+<ion-view>
+  <ion-nav-title class="text-center">Listen Online</ion-nav-title>
+  <ion-content class="home-content">
     <div class="list">
-      <div class="item item-input-inset">
-        <label class="item-input-wrapper">
+      <div class="item item-input-inset transparent borderless">
+        <label class="item-input-wrapper transparent">
           <i class="icon ion-search placeholder-icon"></i>
           <input type="text" placeholder="Search" class="searchbar" ng-model="searchInput">
         </label>
-        <button class="button button-clear ion-funnel" ng-click="openPopover($event)">
+        <button class="button button-clear ion-social-buffer" ng-click="openPopover($event)">
         </button>
       </div>
-      <a class="item" ui-sref="topic({year: {{topic.year}}, id: {{topic.questionNumber}}})" ng-repeat = "topic in topicinfo | orderBy:sortType:sortReverse | filter:searchInput">
-        <p class="listheader">{{topic.year}} Question {{topic.questionNumber}}</p>
-        <p class="listitem">{{topic.fullQuestion}}</p>
+      <a class="item transparent download-list" ui-sref="topic({year: {{topic.year}}, id: {{topic.questionNumber}}})" ng-repeat = "topic in topicinfo | orderBy:sortType | filter:searchInput">
+        <p class="download listheader">{{topic.year}} Question {{topic.questionNumber}}</p>
+        <p class="download listitem">{{topic.fullQuestion}}</p>
       </a>
-      {{entries.name}}
     </div>
   </ion-content>
 </ion-view>

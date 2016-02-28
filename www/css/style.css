@@ -1,3 +1,171 @@
+@font-face {
+    font-family: 'fontawesome';
+    src:url('../lib/font-awesome/fonts/fontawesome-webfont.eot');
+    src:url('../lib/font-awesome/fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+        url('../lib/font-awesome/fonts/fontawesome-webfont.woff') format('woff'),
+        url('../lib/font-awesome/fonts/fontawesome-webfont.ttf') format('truetype'),
+        url('../lib/font-awesome/fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Font Awesome */
+.fa-search-plus:before {
+    font-family: "fontawesome";
+    content: "\f00e";
+}
+
+.fa-search-minus:before {
+    font-family: "fontawesome";
+    content: "\f010";
+}
+
+.fa-percent:before {
+    font-family: "fontawesome";
+    content: "\f295";
+}
+
+.fa-play-circle:before{
+    font-family: "fontawesome";
+    content: "\f144";
+}
+
+.fa-download:before{
+    font-family: "fontawesome";
+    content: "\f019";
+}
+
+/* General */
+.transparent {
+	background-color: transparent !important;
+}
+
+/* Ionic Popup */
+
+.popup {
+	border-radius: 20px !important;
+}
+
+/* Ionic Content */
+
+
+
+/* Navbar */
+
+.nav-button-options:before {
+	font-size: 30px !important;
+}
+
+/* Sidemenu */
+
+.sidemenu-item {
+	background-color: transparent !important;
+	border-style: none none solid none ;
+	border-bottom-width: 1px;
+	border-bottom-color: rgba(255,255,255,0.1);
+}
+
+ .sidemenu-item * {
+ 	background-color: transparent !important;
+ 	color: white;
+	font-weight: 700;
+	font-size: 17px;
+
+ }
+
+/* Home */
+
+.home-content {
+	background-image: url("../img/download_background.png");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; 
+    background-color: #000000;
+	background-attachment: fixed;
+}
+
+.home-icon:before {
+	font-size: 120px;
+	line-height: -20px !important;
+	color: #e5e5e5;
+}
+
+.home-title {
+	font-size: 18px;
+	width: 100%;
+	color: #e5e5e5;
+}
+
+/* Browse */
+.ion-social-buffer:before {
+	color: white;
+}
+
+.ion-social-buffer {
+	font-size: 25px;
+}
+
+.placeholder-icon {
+	font-size: 18px;
+}
+
+input[type="text"] {
+
+  font-size: 18px;
+  color: white;
+}
+
+.candidate-info {
+	background-color: #e5e5e5;
+}
+
+.browse-popover {
+	width: 200px;
+}
+/* Teach */
+/* Offline */
+.download-list {
+	border: none;
+}
+
+.download.listheader {
+	font-size: 18px !important;
+	color: #ffffff !important;
+}
+
+.download.listitem {
+	font-size: 15px !important;
+	color: #c5c5c5 !important;
+	font-style: italic;
+}
+
+.download.listicon:before {
+	color: #e2e2e2 !important;
+}
+
+.offline-settings {
+	border-radius: 0px;
+	background: black !important;
+	height: 160px;
+	width: 180px;
+}
+
+/* About */
+
+/* Other Styling */
+.empty-folder {
+	background-image: url("../img/empty_folder.png");
+	background-size: cover;                      /* <------ */
+    background-repeat: no-repeat;
+    background-position: center center; 
+    height: 100%; 
+	overflow: hidden;
+}
+
+ion-nav-title.text-center:before {
+	width: 100%;
+}
+
 .videoWrapper {
 	position: relative;
 	padding-bottom: 56.25%; /* 16:9 */
@@ -13,47 +181,21 @@
 	height: 100%;
 }
 
-.download {
-	margin-top: 0 !important;
-	margin-bottom: 0 !important;
-}
-
-.showdetails {
-	margin-top: 0 !important;
-}
-
-.sidemenu {
-	background: #c5c5c5 !important;
-}
-
-.sidemenuitem, .sidemenuitem *{
-	background: none;
-	border: none;
-	color: black;
-	font-weight: 700;
-	font-size: 17px;
-}
-
-.listheader {
-	font-size: 15px !important;
-	color: #000000 !important;
-	font-weight: 700;
-}
-
-.listitem {
-	font-size: 15px !important;
-	color: #000000 !important;
-	font-weight: 700;
-}
-
-.ion-funnel {
-	color: #000000 !important;
-	font-size: 25px;
+.download-buttons {
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 .popover {
 	border-radius: 25px;
 	background: rgba(200,200,200,0.9);
+}
+
+.popover-header-text {
+	width: 100%;
+	text-align: center !important;
+	font-size: 20px;
+	padding-top: 10px;
 }
 
 .popover-header, .popover-header * {
@@ -68,9 +210,6 @@
 	font-size: 20px;
 }
 
-.text-center {
-}
-
 .changepage * {
 	padding-top: 10px;
 	font-size: 15px;
@@ -79,6 +218,7 @@
 .justify {
 	text-align: justify;
 	vertical-align: middle;
+	margin-top: 6%;
 }
 
 .justify:after {
@@ -103,23 +243,20 @@
 	line-height: 25px;
 }
 
-.cssFade {
-    transition: 0.7s linear all;
-    opacity: 1;
-}
-.cssFade.ng-hide {
-    opacity: 0;
-}
-
 .cssSlideUp {
-    transition: 0.7s linear all;
-    height: 80px;
+    transition: 0.9s linear all;
+    height: 160px;
     overflow: hidden;
 }
+
 .cssSlideUp.ng-hide {
     height:0;
 }
 
+.cssSlideUp.ng-hide-add,
+.cssSlideUp.ng-hide-remove {
+  display: block !important;
+}
 
 .bold {
 	font-weight: 700 !important;
@@ -127,4 +264,37 @@
 
 .borderless {
 	border: none !important;
+}
+
+.fit-page-option {
+	font-weight: 700;
+	font-size: 25px;
+	color: #000000 !important;
+}
+
+
+
+.no-margins, .no-margins *, .no-margins * *{
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+.audio-bar-parent {
+	height: 50px;
+}
+
+.audio-bar-child {
+	margin-top: 5%;
+}
+
+
+@font-face {
+    font-family: ABeeZee-Regular;
+    src: url(./ABeeZee-Regular.otf);
+}
+
+body {
+	font-family: ABeeZee-Regular;
 }
