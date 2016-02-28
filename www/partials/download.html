@@ -1,10 +1,11 @@
 <ion-view>
     <ion-nav-title class="text-center">Listen Offline</ion-nav-title>
-    <ion-nav-buttons side="primary">
+    <ion-nav-buttons side="right">
         <button class="button button-clear icon ion-trash-b nav-button-options" ng-click="confirmRemovalAll()">
         </button>
     </ion-nav-buttons>
-    <ion-content class="home-content" ng-class="{'empty-folder' : files.length == 0}" ng-click="goToBrowse(files.length)">
+    <ion-content class="home-content" ng-click="goToBrowse(files.length)">
+        <img src="../img/empty_folder.png" height="100%" ng-show="files.length == 0">
         <ion-list>
             <ion-item ng-repeat="file in files | orderBy: Sorter | filter: { name: 'd.pdf' }" ng-click="goToOfflineView(file.name.split('d.pdf'))" class="item item-icon-left transparent download-list">
                     <i class="icon ion-headphone download listicon transparent"></i>

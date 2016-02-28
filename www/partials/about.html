@@ -1,25 +1,20 @@
 <ion-view>
     <ion-nav-title class="text-center">About</ion-nav-title>
-    <ion-content>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <i class="icon ion-android-folder home-icon text-center" ui-sref="download"><p class="home-title text-center">Listen Offline</p></i>
-                
-            </div>
-            <div class="col text-center">
-                <i class="icon ion-information-circled home-icon text-center" ui-sref="about"><p class="home-title text-center">About</p></i>
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="col text-center">
-                <i ng-show="yearid" class="icon ion-play home-icon text-center" ui-sref="offline({yearid: yearid})"><p class="home-title text-center">Recently Player</p></i>
-                
-            </div>
-            <div class="col text-center">
-                <i class="icon ion-information-circled home-icon text-center" ui-sref="about"><p class="home-title text-center">關於我們</p></i>
-            </div>
+    <ion-content class="home-content text-center about-page">
+        <br>
+        <img src="../img/logo.png" width="100%">
+        <h2 class="white about-page">StarChat DSE</h2>
+        <br>
+        <div class="animated slideInLeft text-center">
+            <h4 class="about-page-name">Peter Yuen :</h4>
+            <p class="about-page-role">Founder and Programmer</p>
+            <br>
+            <h4 class="about-page-name">Lixi :</h4>
+            <p class="about-page-role">Programmer</p>
+            <br>
+            <h4 class="about-page-name">Special Thanks : </h4>
+            <p class="about-page-role">All Recording Volunteers</p>
+            <p class="about-page-role">Noisy Room Studio</p>
         </div>
     </ion-content>
 </ion-view>

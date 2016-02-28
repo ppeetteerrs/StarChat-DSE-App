@@ -17,7 +17,7 @@ StarChatDSEControllers.controller("homeCtrl", ["$scope", "$localStorage", "$sess
 }]);
 
 StarChatDSEControllers.controller("introCtrl", ["$scope", "$ionicSlideBoxDelegate", function($scope, $ionicSlideBoxDelegate){
-
+  $scope.image_list = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,1];
 }]);
 
 StarChatDSEControllers.controller("aboutCtrl", ["$scope", function($scope){
@@ -135,7 +135,7 @@ StarChatDSEControllers.controller("teachCtrl", ["$scope", "$stateParams", "$ioni
     $timeout(function(){
       $ionicLoading.hide();
       console.log("hidden");
-    },4000);
+    },3000);
   };
 
   $scope.onError = function(error) {

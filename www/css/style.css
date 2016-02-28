@@ -1,3 +1,19 @@
+/* Fonts */
+
+@font-face {
+    font-family: ABeeZee-Regular;
+    src: url(./ABeeZee-Regular.otf);
+}
+
+@font-face {
+    font-family: HanWangYenHeavy;
+    src: url(./wt009.ttf);
+}
+
+body {
+	font-family: ABeeZee-Regular;
+}
+
 @font-face {
     font-family: 'fontawesome';
     src:url('../lib/font-awesome/fonts/fontawesome-webfont.eot');
@@ -40,6 +56,10 @@
 	background-color: transparent !important;
 }
 
+.white {
+	color: white;
+}
+
 /* Ionic Popup */
 
 .popup {
@@ -71,7 +91,18 @@
 	font-weight: 700;
 	font-size: 17px;
 
- }
+}
+
+/* Intro */
+
+.intro-images {
+	width: 80% !important;
+	margin: 10%;
+}
+
+.intro-slides{
+	background-color: rgba(122,218,250,0.5);
+}
 
 /* Home */
 
@@ -151,17 +182,23 @@ input[type="text"] {
 }
 
 /* About */
-
-/* Other Styling */
-.empty-folder {
-	background-image: url("../img/empty_folder.png");
-	background-size: cover;                      /* <------ */
-    background-repeat: no-repeat;
-    background-position: center center; 
-    height: 100%; 
-	overflow: hidden;
+.about-page {
+	font-family: HanWangYenHeavy;
 }
 
+.about-page-name {
+	color: white;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.about-page-role {
+	color: #d5d5d5;
+	font-style: italic;
+	font-size: 16px;
+}
+
+/* Other Styling */
 ion-nav-title.text-center:before {
 	width: 100%;
 }
@@ -287,14 +324,4 @@ ion-nav-title.text-center:before {
 
 .audio-bar-child {
 	margin-top: 5%;
-}
-
-
-@font-face {
-    font-family: ABeeZee-Regular;
-    src: url(./ABeeZee-Regular.otf);
-}
-
-body {
-	font-family: ABeeZee-Regular;
 }
