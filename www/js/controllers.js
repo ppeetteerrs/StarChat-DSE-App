@@ -1,22 +1,38 @@
 var StarChatDSEControllers = angular.module("StarChatDSEControllers", ["StarChatDSE", "StarChatDSEServices", "pdf", "ionic", "ionic-audio", "ngCordova"]);
 
-StarChatDSEControllers.controller("homeCtrl", ["$scope", "$localStorage", "$sessionStorage", "$state", "$rootScope", "$ionicPlatform", function($scope, $localStorage, $sessionStorage, $state, $rootScope, $ionicPlatform){
-  //$localStorage.$reset(); //DELETE DURING PRODUCTION
-  if(!$localStorage.launchNumber) {
-    console.log("first time");
-    var state = "intro";
-    $state.go(state);
-    $localStorage.launchNumber = 1;
-  } else {
-    $localStorage.launchNumber = $localStorage.launchNumber + 1;
+StarChatDSEControllers.controller("homeCtrl", ["$scope", "$localStorage", "$sessionStorage", "$state", "$rootScope", "$ionicPlatform", "$ionicPopup", function($scope, $localStorage, $sessionStorage, $state, $rootScope, $ionicPlatform, $ionicPopup){
+  $scope.inviteSurvey = function() {
+    var confirmPopup = $ionicPopup.confirm({
+      title: '<span class="bold">Help Us Improve</span>',
+      template: 'Would you like to complete a survey regarding your experience with StarChat DSE?',
+      scope: $scope
+    }).then(function(res) {
+      if(res) {
+        window.open('http://goo.gl/forms/pXxkG8BRKw','_system','location=yes');
+      } else {
+      };
+    });
   };
-  console.log($localStorage.launchNumber);
+  //$localStorage.$reset(); //DELETE DURING PRODUCTION
+  if(!$rootScope.afterLaunch) {
+    $rootScope.afterLaunch = true;
+    if(!$localStorage.launchNumber){
+      $localStorage.launchNumber = 1;
+      $state.go("intro");
+    } else {
+      $localStorage.launchNumber = $localStorage.launchNumber + 1;
+      if ($localStorage.launchNumber == 5) {
+        $scope.inviteSurvey();
+      };
+    };
+  };
+  console.log($localStorage.launchNumber + "th time launching the app!"); 
 
-  
+
 }]);
 
 StarChatDSEControllers.controller("introCtrl", ["$scope", "$ionicSlideBoxDelegate", function($scope, $ionicSlideBoxDelegate){
-  $scope.image_list = [2,3,4,5,6,7,8,9,10,11,12,13,14,15,1];
+  $scope.image_list = [1,2,3,4,5,6,7];
 }]);
 
 StarChatDSEControllers.controller("aboutCtrl", ["$scope", function($scope){
@@ -134,6 +150,7 @@ StarChatDSEControllers.controller("teachCtrl", ["$scope", "$stateParams", "$ioni
     $timeout(function(){
       $ionicLoading.hide();
       console.log("hidden");
+      $cordovaToast.show('The file might take a while to load', 'long', 'bottom');
     },3000);
   };
 
@@ -144,7 +161,7 @@ StarChatDSEControllers.controller("teachCtrl", ["$scope", "$stateParams", "$ioni
 
 StarChatDSEControllers.controller("topicCtrl", ["$scope", "$stateParams", "$filter", "$sce", "$cordovaFileTransfer", "$cordovaFile", "$ionicLoading", "$http", "$cordovaToast", "$ionicPopup", function($scope, $stateParams, $filter, $sce, $cordovaFileTransfer, $cordovaFile, $ionicLoading, $http, $cordovaToast, $ionicPopup){
   $scope.groupToggle = 1;
-  $scope.Loaded = 0;
+  $scope.Loaded = false;
   $scope.showDetails = function(){
     $scope.detailsShow = !$scope.detailsShow;
     console.log($scope.detailsShow);
@@ -159,9 +176,9 @@ StarChatDSEControllers.controller("topicCtrl", ["$scope", "$stateParams", "$filt
         $scope.topicdata = data;
         $scope.youtubeUrl = $scope.topicdata.Links.g;
         $scope.dialogue = $scope.topicdata.Dialogue.g;
-        console.log("got topic.json");
-        $scope.Loaded = 1;
+        $scope.Loaded = true;
         $ionicLoading.hide();
+        console.log("got topic.json" + $scope.Loaded);
       },function(err){
         console.log(err);
         $ionicLoading.hide();
@@ -190,8 +207,8 @@ StarChatDSEControllers.controller("topicCtrl", ["$scope", "$stateParams", "$filt
 
   $scope.confirmDownload = function() {
    var confirmPopup = $ionicPopup.confirm({
-     title: 'Comfirm Download',
-     template: 'Are you sure you want to download an offline version?',
+     title: '<span class="bold">Confirm Download</span>',
+     template: 'I agree that the downloaded resources will only be for my private usage.',
      scope: $scope
    }).then(function(res) {
      if(res) {
@@ -217,12 +234,12 @@ StarChatDSEControllers.controller("topicCtrl", ["$scope", "$stateParams", "$filt
     console.log("filename:" + filename);
      
     // Save location
-    var targetPath1 = cordova.file.externalRootDirectory + "StarChatDSE/" + filename + "d.mp3";
-    var targetPath2 = cordova.file.externalRootDirectory + "StarChatDSE/" + filename + "i.mp3";
-    var targetPath3 = cordova.file.externalRootDirectory + "StarChatDSE/" + filename + "d.pdf";
-    var targetPath4 = cordova.file.externalRootDirectory + "StarChatDSE/" + filename + "di.pdf";
-    var targetPath5 = cordova.file.externalRootDirectory + "StarChatDSE/" + filename + "i.pdf";
-    var targetPath6 = cordova.file.externalRootDirectory + "StarChatDSE/" + filename + "ii.pdf";
+    var targetPath1 = cordova.file.applicationStorageDirectory + "StarChatDSE/" + filename + "d.mp3";
+    var targetPath2 = cordova.file.applicationStorageDirectory + "StarChatDSE/" + filename + "i.mp3";
+    var targetPath3 = cordova.file.applicationStorageDirectory + "StarChatDSE/" + filename + "d.pdf";
+    var targetPath4 = cordova.file.applicationStorageDirectory + "StarChatDSE/" + filename + "di.pdf";
+    var targetPath5 = cordova.file.applicationStorageDirectory + "StarChatDSE/" + filename + "i.pdf";
+    var targetPath6 = cordova.file.applicationStorageDirectory + "StarChatDSE/" + filename + "ii.pdf";
      
     $cordovaFileTransfer.download(url1, targetPath1, {}, true)
     .then(function (result) {
@@ -314,54 +331,55 @@ StarChatDSEControllers.controller("topicCtrl", ["$scope", "$stateParams", "$filt
 }]);
   
 StarChatDSEControllers.controller("downloadCtrl", ["$scope", "$ionicPlatform", "$cordovaFile", "$cordovaMedia", "$filter", "$http", "ShowDownloads", "$cordovaFile", "$cordovaToast", "$ionicPopup", "$state", "$ionicHistory", "$rootScope", function($scope, $ionicPlatform, $cordovaFile, $cordovaMedia, $filter, $http, ShowDownloads, $cordovaFile, $cordovaToast, $ionicPopup, $state, $ionicHistory, $rootScope){
-    $scope.filedir = cordova.file.externalRootDirectory + "StarChatDSE/";
-    $scope.deletepath = cordova.file.externalRootDirectory;
+  $scope.filedir = cordova.file.applicationStorageDirectory + "StarChatDSE/";
+  $scope.deletepath = cordova.file.applicationStorageDirectory;
+  console.log($scope.filedir);
 
-    $scope.checkFiles = function(filedir){
-      ShowDownloads(filedir).then(function(entries){
-        $scope.files = entries;
-        console.log(entries);
-        console.log($scope.files.length);
-      }, function(error){
-        console.log("error");
-        $scope.files = [];
-        console.log($scope.files.length);
-      });
-    };
+  $scope.checkFiles = function(filedir){
+    ShowDownloads(filedir).then(function(entries){
+      $scope.files = entries;
+      console.log(entries);
+      console.log($scope.files.length);
+    }, function(error){
+      console.log("error");
+      $scope.files = [];
+      console.log($scope.files.length);
+    });
+  };
 
-    $scope.checkFiles($scope.filedir);
+  $scope.checkFiles($scope.filedir);
 
-    $scope.show = function(message){
-      console.log(message);
-    };
+  $scope.show = function(message){
+    console.log(message);
+  };
 
-    $scope.Sorter = function(file) {
-      return file.name.split("_____")[1].substring(0, 6);
-    };
+  $scope.Sorter = function(file) {
+    return file.name.split("_____")[1].substring(0, 6);
+  };
 
-    $scope.removeAll = function(){
-      $cordovaFile.removeRecursively($scope.deletepath,"StarChatDSE")
-        .then(function (success) {
-          $cordovaToast.show('All Local Files Deleted!', 'long', 'bottom');
-          $scope.checkFiles($scope.filedir);
-        }, function (error) {
-          $cordovaToast.show('Folder is Already Empty =(', 'long', 'bottom');
-      });
-    };
+  $scope.removeAll = function(){
+    $cordovaFile.removeRecursively($scope.deletepath,"StarChatDSE")
+      .then(function (success) {
+        $cordovaToast.show('All Local Files Deleted!', 'long', 'bottom');
+        $scope.checkFiles($scope.filedir);
+      }, function (error) {
+        $cordovaToast.show('Folder is Already Empty =(', 'long', 'bottom');
+    });
+  };
 
-    $scope.confirmRemovalAll = function() {
-     var confirmPopup = $ionicPopup.confirm({
-       title: 'Comfirm Removal',
-       template: 'Are you sure you want to remove all downloaded files?',
-       scope: $scope
-     }).then(function(res) {
-       if(res) {
-         $scope.removeAll();
-       } else {
-         $cordovaToast.show('Cancelled', 'long', 'bottom');
-       }
-     });
-    };
+  $scope.confirmRemovalAll = function() {
+    var confirmPopup = $ionicPopup.confirm({
+     title: '<span class="bold">Comfirm Removal</span>',
+     template: 'Are you sure you want to remove all downloaded files?',
+     scope: $scope
+  }).then(function(res) {
+     if(res) {
+       $scope.removeAll();
+    } else {
+       $cordovaToast.show('Cancelled', 'long', 'bottom');
+    }
+  });
+  };
 
     /* ADD THIS TO ION-ITEM : on-hold="confirmRemovalItem(file.name.split('d.pdf'))"
 
@@ -399,24 +417,24 @@ StarChatDSEControllers.controller("downloadCtrl", ["$scope", "$ionicPlatform", "
       });
     };*/
 
-    $scope.goToBrowse = function(length){
-      if(length == 0){
-        $state.go("browse");
-      };
+  $scope.goToBrowse = function(length){
+    if(length == 0){
+      $state.go("browse");
     };
+  };
 
-    $scope.goToOfflineView = function(yearid){
-      console.log(yearid);
-      if ($rootScope.yearid != yearid && $rootScope.yearid) {
-        $ionicHistory.clearCache().then(function(){
-          console.log("Cache is cleared!");
-          $state.go("offline", {yearid : yearid});
-        });
-      } else {
+  $scope.goToOfflineView = function(yearid){
+    console.log(yearid);
+    if ($rootScope.yearid != yearid && $rootScope.yearid) {
+      $ionicHistory.clearCache().then(function(){
+        console.log("Cache is cleared!");
         $state.go("offline", {yearid : yearid});
-      };
-      
+      });
+    } else {
+      $state.go("offline", {yearid : yearid});
     };
+    
+  };
 }]);
 
 StarChatDSEControllers.controller("offlineCtrl", ["$scope", "$ionicPlatform", "$cordovaFile", "$stateParams", "$timeout", "$rootScope", "$ionicLoading", "$ionicPopover", "MediaManager", function($scope, $ionicPlatform, $cordovaFile, $stateParams, $timeout, $rootScope, $ionicLoading, $ionicPopover, MediaManager){
@@ -424,7 +442,7 @@ StarChatDSEControllers.controller("offlineCtrl", ["$scope", "$ionicPlatform", "$
     $rootScope.yearid = $stateParams.yearid;
     $scope.groupInd = 'd';
     $scope.verbatimImprove = '';
-    $scope.localDatabase = cordova.file.externalRootDirectory + "StarChatDSE/";
+    $scope.localDatabase = cordova.file.applicationStorageDirectory + "StarChatDSE/";
     $scope.filename = $stateParams.yearid.replace(",","");
     $scope.dynamicTrack = {};
     $scope.tracks = [

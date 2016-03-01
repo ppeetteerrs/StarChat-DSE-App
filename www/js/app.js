@@ -82,9 +82,24 @@ StarChatDSE.config(["$stateProvider", "$urlRouterProvider", "$ionicConfigProvide
     });*/
 }]);
 
-StarChatDSE.run(["$ionicPlatform", function($ionicPlatform) {
+StarChatDSE.run(["$ionicPlatform", "$rootScope", "$cordovaToast", "$ionicLoading", "$cordovaNetwork", function($ionicPlatform, $rootScope, $cordovaToast, $ionicLoading, $cordovaNetwork) {
+  console.log($cordovaNetwork.getNetwork());
+  $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+    $ionicLoading.hide();
+    $cordovaToast.show('Please Ensure Stable Connection', 'long', 'bottom');
+  });
   console.log("running");
-
 }]);
 
+/* BUILD PRODUCTION:
+version="X.Y.Z"
+cordova plugin rm cordova-plugin-console
+ionic build android --release
+cordova plugin add cordova-plugin-console
+cd platforms/android/build/outputs/apk
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-armv7-release-unsigned.apk alias_name
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore android-x86-release-unsigned.apk alias_name
+zipalign -v 4 android-armv7-release-unsigned.apk starchatdse-armv7-X-Y-Z.apk
+zipalign -v 4 android-x86-release-unsigned.apk starchatdse-x86-X-Y-Z.apk
+(password:lixiapps) */
 

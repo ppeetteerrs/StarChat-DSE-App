@@ -194,12 +194,18 @@ input[type="text"] {
 	color: white;
 	font-size: 20px;
 	font-weight: 700;
+	margin: 2%;
 }
 
 .about-page-role {
 	color: #d5d5d5;
 	font-style: italic;
 	font-size: 16px;
+	margin: 2%;
+}
+
+.about-page-role-last {
+	margin-bottom: 5%;
 }
 
 /* Other Styling */
