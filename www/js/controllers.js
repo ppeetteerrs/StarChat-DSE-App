@@ -1,8 +1,7 @@
 var StarChatDSEControllers = angular.module("StarChatDSEControllers", ["StarChatDSE", "StarChatDSEServices", "pdf", "ionic", "ionic-audio", "ngCordova"]);
 
 StarChatDSEControllers.controller("homeCtrl", ["$scope", "$localStorage", "$sessionStorage", "$state", "$rootScope", "$ionicPlatform", function($scope, $localStorage, $sessionStorage, $state, $rootScope, $ionicPlatform){
-  // Show Tutorial
-  /*$localStorage.$reset(); //DELETE DURING PRODUCTION
+  //$localStorage.$reset(); //DELETE DURING PRODUCTION
   if(!$localStorage.launchNumber) {
     console.log("first time");
     var state = "intro";
@@ -11,7 +10,7 @@ StarChatDSEControllers.controller("homeCtrl", ["$scope", "$localStorage", "$sess
   } else {
     $localStorage.launchNumber = $localStorage.launchNumber + 1;
   };
-  console.log($localStorage.launchNumber);*/
+  console.log($localStorage.launchNumber);
 
   
 }]);

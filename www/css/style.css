@@ -101,6 +101,10 @@ body {
 }
 
 .intro-slides{
+	background-color: transparent;
+}
+
+.intro-view {
 	background-color: rgba(122,218,250,0.5);
 }
 
